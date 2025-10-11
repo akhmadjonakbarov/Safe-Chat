@@ -1,7 +1,9 @@
 # 🛡️ Safe Chat App
 
+![Safe Chat Preview](image/img.jpg)
+
 **Safe Chat** is a privacy-focused real-time chat application built with **FastAPI (backend)** and **Kotlin (Android client)**.  
-It ensures secure communication between users by validating Wi-Fi network safety, encrypting messages, and providing an intuitive modern chat experience.
+It ensures secure communication between users by validating Wi-Fi network safety, encrypting messages, and providing a clean, modern chat experience.
 
 ---
 
@@ -11,25 +13,25 @@ It ensures secure communication between users by validating Wi-Fi network safety
 - **User Authentication**
   - Register, login, and token-based authentication (JWT)
 - **Real-time Messaging**
-  - WebSocket-based chat for instant message delivery
+  - WebSocket-based chat for instant delivery
 - **Unread Message Tracking**
-  - Each chatroom displays the number of unread messages
+  - Each chatroom shows the number of unread messages
 - **Last Message Preview**
   - Chat list shows the most recent message for each chatroom
 - **Message Read Status**
-  - Messages automatically marked as read once viewed
+  - Messages automatically marked as read when viewed
 
 ### 🔒 Safety Features
 - **Wi-Fi Safety Checker (Android)**
-  - Detects if the current network is safe before connecting to chat
-  - Warns users about insecure or suspicious networks
-- **End-to-End Encryption (Optional/Planned)**
-  - Ensures data confidentiality between sender and receiver
+  - Detects if the current network is safe before connecting
+  - Warns users about insecure or suspicious Wi-Fi networks
+- **End-to-End Encryption (Planned)**
+  - Ensures message confidentiality and privacy
 
 ### 💬 Chatroom Management
 - Create and manage 1-on-1 chatrooms  
-- See last message and unread count for each room  
-- Receive message notifications in real time
+- See last message and unread count  
+- Receive live notifications for new messages
 
 ---
 
@@ -37,18 +39,18 @@ It ensures secure communication between users by validating Wi-Fi network safety
 
 ### Backend (FastAPI)
 - **Framework:** FastAPI  
-- **Database:** PostgreSQL (with SQLAlchemy ORM)  
+- **Database:** PostgreSQL + SQLAlchemy ORM  
 - **Auth:** JWT-based authentication  
-- **WebSocket:** Real-time messaging  
+- **WebSocket:** Real-time chat system  
 - **Serializer:** Pydantic models  
-- **Deployed via:** Uvicorn + Gunicorn  
+- **Deployment:** Uvicorn / Gunicorn  
 
 ### Android App (Kotlin)
 - **Architecture:** MVVM + Flow + Jetpack Compose  
 - **Networking:** Retrofit + OkHttp  
 - **WebSocket:** OkHttp WebSocket client  
 - **Persistence:** Room Database  
-- **UI:** Material 3, Compose UI  
+- **UI:** Material 3 + Compose UI  
 - **Coroutines:** For async event handling  
 
 ---
@@ -59,24 +61,18 @@ It ensures secure communication between users by validating Wi-Fi network safety
 |-----------|--------|-------------|
 | `/api/v1/auth/register` | POST | Register a new user |
 | `/api/v1/auth/login` | POST | Login and get JWT token |
-| `/api/v1/chatrooms` | GET | Get all chatrooms for a user |
-| `/api/v1/chatrooms/{id}/messages` | GET | Fetch messages in a room |
-| `/api/v1/chatrooms/{id}/messages` | POST | Send a new message |
-| `/ws/chat/{room_id}` | WS | Connect to a chatroom WebSocket |
-
----
-
-## 📱 Android Screenshots (Preview)
-
-> _Coming soon_  
-> (Add screenshots of login, chat list, and chat room views here)
+| `/api/v1/chatrooms` | GET | Get all chatrooms for the logged-in user |
+| `/api/v1/chatrooms/{id}/messages` | GET | Fetch all messages from a room |
+| `/api/v1/chatrooms/{id}/messages` | POST | Send a message to a room |
+| `/ws/chat/{room_id}` | WS | Connect to WebSocket for real-time messaging |
 
 ---
 
 ## ⚙️ Setup Guide
 
 ### Backend Setup
+
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/safe-chat-backend.git
-   cd safe-chat-backend
+   git clone https://github.com/yourusername/safe-chat.git
+   cd safe-chat
