@@ -1,6 +1,6 @@
 # 🛡️ Safe Chat App
 
-![Safe Chat Preview](image/img.jpg)
+![Safe Chat Preview](image/chatapp.png)
 
 **Safe Chat** is a privacy-focused real-time chat application built with **FastAPI (backend)** and **Kotlin (Android client)**.  
 It ensures secure communication between users by validating Wi-Fi network safety, encrypting messages, and providing a clean, modern chat experience.
