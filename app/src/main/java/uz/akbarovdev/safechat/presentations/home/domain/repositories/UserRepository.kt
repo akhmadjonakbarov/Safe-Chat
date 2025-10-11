@@ -1,6 +1,6 @@
 package uz.akbarovdev.safechat.presentations.home.domain.repositories
 
-import uz.akbarovdev.safechat.presentations.home.domain.models.User
+import uz.akbarovdev.safechat.presentations.auth.domain.models.User
 
 interface UserRepository {
     suspend fun getUsers(): List<User>

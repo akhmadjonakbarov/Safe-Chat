@@ -1,7 +1,7 @@
 package uz.akbarovdev.safechat.presentations.home.data.repositories
 
 import uz.akbarovdev.safechat.presentations.home.data.remote.UserApi
-import uz.akbarovdev.safechat.presentations.home.domain.models.User
+import uz.akbarovdev.safechat.presentations.auth.domain.models.User
 import uz.akbarovdev.safechat.presentations.home.domain.repositories.UserRepository
 
 class UserRepositoryIml(

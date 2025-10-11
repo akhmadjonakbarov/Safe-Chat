@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import uz.akbarovdev.safechat.presentations.auth.presentation.AuthRoot
 import uz.akbarovdev.safechat.presentations.chat.presentation.ChatRoot
 import uz.akbarovdev.safechat.presentations.home.presenation.HomeRoot
+import uz.akbarovdev.safechat.presentations.home.utils.toChatRoom
 
 
 @Composable
@@ -25,13 +26,17 @@ fun NavigationRoot(
         navController = navHostController, startDestination = Routes.Auth
     ) {
         composable<Routes.Home> {
-            HomeRoot()
+            HomeRoot(
+                onNavigateToChat = {
+                    navHostController.navigate(it.toChatRoom())
+                }
+            )
         }
         composable<Routes.Chat> {
-            ChatRoot()
+            ChatRoot(navHostController)
         }
         composable<Routes.Auth> {
-            AuthRoot()
+            AuthRoot(navHostController)
         }
         composable<Routes.Splash> {
             Scaffold { innerPadding ->

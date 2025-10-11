@@ -86,4 +86,11 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.material.icons.extended)
 
+    implementation(libs.androidx.navigation.compose.v280) // or newer
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.kotlinx.serialization.json.v172)
+
+    // Image
+    implementation(libs.coil.compose)
+
 }

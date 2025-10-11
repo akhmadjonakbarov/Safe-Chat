@@ -14,7 +14,7 @@ object SafeChatClient {
     //    private const val BASE_URL = "http://92.112.181.239/api/v1/"
 //    private const val BASE_URL = "http://avangard-mobile.uz/api/v1/"
 
-            private const val BASE_URL = "http://10.0.2.2:8000/api/v1/"
+    private const val BASE_URL = "http://10.0.2.2:8000/api/v1/"
     val logging = HttpLoggingInterceptor { message ->
         // Avoid spamming binary data into logs
         if (message.startsWith("{") || message.startsWith("[")) {
