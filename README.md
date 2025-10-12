@@ -22,9 +22,6 @@ It ensures secure communication between users by validating Wi-Fi network safety
   - Messages automatically marked as read when viewed
 
 ### 🔒 Safety Features
-- **Wi-Fi Safety Checker (Android)**
-  - Detects if the current network is safe before connecting
-  - Warns users about insecure or suspicious Wi-Fi networks
 - **End-to-End Encryption (Planned)**
   - Ensures message confidentiality and privacy
 
