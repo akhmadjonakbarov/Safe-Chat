@@ -187,7 +187,7 @@ private fun Preview() {
             state = ChatState(
                 messages = dummyMessages,
                 receiver = ChatRoomUser(
-                    1, "akhmad@gmail.com"
+                    1, "akhmad@gmail.com", "akhmad"
                 )
             ),
             onAction = {},

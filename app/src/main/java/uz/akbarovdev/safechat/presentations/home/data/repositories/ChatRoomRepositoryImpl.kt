@@ -23,4 +23,13 @@ class ChatRoomRepositoryImpl(
             Handler.Error("Failed to fetch chat rooms: ${e.localizedMessage}")
         }
     }
+
+    override suspend fun createChatRoom(receiverId: Int): Int {
+        val response = chatRoomApi.createChatRoom(receiverId)
+        return if (response.isSuccessful) {
+            response.body()?.chatroomId ?: -1
+        } else {
+            -1
+        }
+    }
 }

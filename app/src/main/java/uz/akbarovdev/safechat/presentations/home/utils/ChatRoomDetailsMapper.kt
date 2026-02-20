@@ -7,7 +7,7 @@ fun ChatRoomDetails.toChatRoom(): Routes.Chat {
     return Routes.Chat(
         this.roomId,
         this.receiverId,
-        this.receiverName
+        this.receiverName,
     )
 }
 
@@ -15,6 +15,6 @@ fun Routes.Chat.toChatRoomDetails(): ChatRoomDetails {
     return ChatRoomDetails(
         this.roomId,
         this.receiverId,
-        this.receiverName
+        this.receiverName,
     )
 }

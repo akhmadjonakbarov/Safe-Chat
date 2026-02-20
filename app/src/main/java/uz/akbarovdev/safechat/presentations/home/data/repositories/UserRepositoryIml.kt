@@ -1,7 +1,8 @@
 package uz.akbarovdev.safechat.presentations.home.data.repositories
 
 import uz.akbarovdev.safechat.presentations.home.data.remote.UserApi
-import uz.akbarovdev.safechat.presentations.auth.domain.models.User
+import uz.akbarovdev.safechat.presentations.home.domain.models.User
+
 import uz.akbarovdev.safechat.presentations.home.domain.repositories.UserRepository
 
 class UserRepositoryIml(
@@ -17,6 +18,12 @@ class UserRepositoryIml(
     }
 
     override suspend fun searchUser(query: String): List<User> {
-        TODO("Not yet implemented")
+        val response = userApi.searchUsers(query)
+        return if (response.isSuccessful) {
+            response.body() ?: emptyList()
+        } else {
+            emptyList()
+        }
+
     }
 }

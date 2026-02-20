@@ -30,19 +30,21 @@ import androidx.compose.ui.unit.sp
 import uz.akbarovdev.safechat.core.design_system.ui.theme.SafeChatTheme
 import uz.akbarovdev.safechat.presentations.home.domain.models.ChatRoom
 import uz.akbarovdev.safechat.presentations.home.domain.models.ChatRoomUser
+import uz.akbarovdev.safechat.presentations.home.domain.models.User
+
 
 @Composable
-fun ChatItem(
+fun UserItem(
     modifier: Modifier = Modifier,
-    chatRoom: ChatRoom,
-    onClickOpenChatRoom: (chatRoom: ChatRoom) -> Unit
+    user: User,
+    onClickOpenChatRoom: (user: User) -> Unit
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
             .height(IntrinsicSize.Max)
             .clickable(onClick = {
-                onClickOpenChatRoom(chatRoom)
+                onClickOpenChatRoom(user)
             }),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent)
     ) {
@@ -64,7 +66,7 @@ fun ChatItem(
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        chatRoom.receiver.email,
+                        user.email,
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.W500,
                             fontSize = 20.sp
@@ -72,36 +74,36 @@ fun ChatItem(
                     )
                     Spacer(Modifier.height(6.dp))
                     Text(
-                        chatRoom.lastMessage ?: "",
+                        user.username,
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             }
-            Column(
-                horizontalAlignment = Alignment.End
-            ) {
-                Text(
-                    "2 min ago",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Spacer(Modifier.height(3.dp))
-                if (chatRoom.unReadMessageCount > 0) {
-                    Box(
-                        Modifier
-                            .size(25.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.primary),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            "${chatRoom.unReadMessageCount}",
-                            color = MaterialTheme.colorScheme.onPrimary
-                        )
-                    }
-                }
-            }
+//            Column(
+//                horizontalAlignment = Alignment.End
+//            ) {
+//                Text(
+//                    "2 min ago",
+//                    style = MaterialTheme.typography.labelLarge,
+//                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+//                )
+//                Spacer(Modifier.height(3.dp))
+//                if (chatRoom.unReadMessageCount > 0) {
+//                    Box(
+//                        Modifier
+//                            .size(25.dp)
+//                            .clip(CircleShape)
+//                            .background(MaterialTheme.colorScheme.primary),
+//                        contentAlignment = Alignment.Center
+//                    ) {
+//                        Text(
+//                            "${chatRoom.unReadMessageCount}",
+//                            color = MaterialTheme.colorScheme.onPrimary
+//                        )
+//                    }
+//                }
+//            }
         }
     }
 }
@@ -110,12 +112,9 @@ fun ChatItem(
 @Composable
 private fun ChatPreview() {
     SafeChatTheme {
-        ChatItem(
-            chatRoom = ChatRoom(
-                1, "Salom qalesiz?", 0, ChatRoomUser(
-                    1,
-                    "akhmad@gmail.com", "blackhat"
-                )
+        UserItem(
+            user = User(
+                1, "blackhat", "blackhat@gmail.com"
             ), onClickOpenChatRoom = {}
         )
     }

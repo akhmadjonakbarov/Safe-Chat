@@ -12,10 +12,12 @@ import kotlinx.coroutines.launch
 import uz.akbarovdev.safechat.core.wrapper.Handler
 import uz.akbarovdev.safechat.presentations.home.domain.models.ChatRoom
 import uz.akbarovdev.safechat.presentations.home.domain.repositories.ChatRoomRepository
+import uz.akbarovdev.safechat.presentations.home.domain.repositories.UserRepository
 
 
 class HomeViewModel(
     private val chatRoomRepository: ChatRoomRepository,
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
 
@@ -40,6 +42,7 @@ class HomeViewModel(
         when (action) {
             HomeAction.OnLoadChatRooms -> getChatRooms()
             is HomeAction.OnSearchUsers -> searchUsers(action.query)
+            is HomeAction.OnCreateChatRoom -> createChatRoom(action.receiverId)
         }
     }
 
@@ -50,7 +53,8 @@ class HomeViewModel(
         if (filteredChatRooms.isNotEmpty()) {
             _state.update { it.copy(chatRooms = filteredChatRooms) }
         } else {
-            // TODO: send to backend to search users
+            val users = userRepository.searchUser(query)
+            _state.update { it.copy(users = users) }
         }
     }
 
@@ -71,6 +75,18 @@ class HomeViewModel(
                             loading = false
                         )
                     }
+                }
+            }
+        }
+    }
+
+    private fun createChatRoom(receiverId: Int) {
+        viewModelScope.launch {
+            _state.update { it.copy(loading = true) }
+            val roomId = chatRoomRepository.createChatRoom(receiverId)
+            if (roomId != -1) {
+                _state.update {
+                    it.copy(loading = false, createdChatRoomId = roomId)
                 }
             }
         }

@@ -7,4 +7,5 @@ import kotlinx.serialization.Serializable
 data class ChatRoomUser(
     val id: Int,
     val email: String,
+    val username: String? = null
 )

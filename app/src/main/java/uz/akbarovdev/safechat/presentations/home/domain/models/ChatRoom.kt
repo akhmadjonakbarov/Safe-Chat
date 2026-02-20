@@ -16,3 +16,11 @@ data class ChatRoom(
     @SerializedName("un_read_message_count") val unReadMessageCount: Int = 0,
     val receiver: ChatRoomUser
 )
+
+
+@Serializable
+data class CreatedChatRoomId(
+    val chatroomId: Int
+)
+
+

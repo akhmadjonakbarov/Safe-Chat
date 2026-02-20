@@ -137,6 +137,16 @@ fun AuthScreen(
 
                 Spacer(modifier = Modifier.height(20.dp))
 
+                if (!state.isLogin) {
+                    OutlinedTextField(
+                        value = state.username,
+                        onValueChange = { onAction(AuthAction.UsernameChanged(it)) },
+                        label = { Text("Username") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+
                 // Email field
                 OutlinedTextField(
                     value = state.email,
@@ -145,6 +155,8 @@ fun AuthScreen(
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
+
+
 
                 // Password field
                 OutlinedTextField(

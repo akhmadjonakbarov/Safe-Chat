@@ -2,6 +2,7 @@ package uz.akbarovdev.safechat.presentations.auth.presentation.view_model
 
 data class AuthState(
     val email: String = "",
+    val username: String = "",
     val password: String = "",
     val password2: String = "",
     val isLoading: Boolean = false,

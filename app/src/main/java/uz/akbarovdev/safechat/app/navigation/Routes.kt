@@ -14,7 +14,11 @@ sealed interface Routes {
     data object Auth : Routes
 
     @Serializable
-    data class Chat(val roomId: Int, val receiverId: Int, val receiverName: String) : Routes
+    data class Chat(
+        val roomId: Int,
+        val receiverId: Int,
+        val receiverName: String,
+    ) : Routes
 
     @Serializable
     data object Splash : Routes

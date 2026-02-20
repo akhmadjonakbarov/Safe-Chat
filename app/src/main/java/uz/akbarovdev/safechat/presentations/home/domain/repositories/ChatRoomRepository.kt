@@ -6,4 +6,5 @@ import uz.akbarovdev.safechat.presentations.home.domain.models.ChatRoom
 
 interface ChatRoomRepository {
     suspend fun getChatRooms(): Handler<Flow<List<ChatRoom>>>
+    suspend fun createChatRoom(receiverId: Int): Int
 }

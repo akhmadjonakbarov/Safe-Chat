@@ -7,6 +7,7 @@ import uz.akbarovdev.safechat.core.retrofits.SafeChatClient
 import uz.akbarovdev.safechat.presentations.auth.data.remote.AuthApi
 import uz.akbarovdev.safechat.presentations.chat.data.remote.MessageApi
 import uz.akbarovdev.safechat.presentations.home.data.remote.ChatRoomApi
+import uz.akbarovdev.safechat.presentations.home.data.remote.UserApi
 
 
 val networkModule = module {
@@ -26,6 +27,9 @@ val networkModule = module {
 
     single<MessageApi> {
         get<Retrofit>(named("SafeChatClient")).create(MessageApi::class.java)
+    }
+    single<UserApi> {
+        get<Retrofit>(named("SafeChatClient")).create(UserApi::class.java)
     }
 
 }

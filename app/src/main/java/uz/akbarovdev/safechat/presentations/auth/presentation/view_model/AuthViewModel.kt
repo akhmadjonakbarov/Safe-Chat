@@ -77,6 +77,10 @@ class AuthViewModel(
             is AuthAction.ConfirmPasswordChanged -> {
                 _state.update { it.copy(password2 = action.value) }
             }
+
+            is AuthAction.UsernameChanged -> {
+                _state.update { it.copy(username = action.username) }
+            }
         }
     }
 
@@ -117,7 +121,8 @@ class AuthViewModel(
             } else {
                 val registerReq = RegisterRequest(
                     email = currentState.email,
-                    password = currentState.password
+                    password = currentState.password,
+                    username = currentState.username
                 )
                 authRepository.register(registerReq)
             }

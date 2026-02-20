@@ -35,7 +35,7 @@ class ChatWebSocketClient {
 
     fun connect(applicationContext: Context, chatRoomId: Int) {
         val token: String by applicationContext.sharedPreferences(PreferenceKeys.Token.name)
-        if (_isConnected.value) return // already connected
+        if (_isConnected.value) return
 
 
         val request = Request.Builder()
@@ -44,7 +44,7 @@ class ChatWebSocketClient {
             .build()
 
         listener = ChatWebSocketListener { message ->
-            // 👇 receive callback from listener and emit into shared flow
+
             CoroutineScope(Dispatchers.IO).launch {
                 _incomingMessages.emit(message)
             }
